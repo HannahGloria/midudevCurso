@@ -8,6 +8,8 @@
     display: grid;
     min-height: 100vh;
     grid-template-columns: repeat(auto-fit, minmax(var(--gridList-column), 1fr));
+    /* autofill este seguirá poniendo columnas aunque estén vacías si el espacio es mayor a la suma de sus anchos */
+    /* auto-fit, en cambio, ajusta las columnas para ocupar todo el espacio disponible */
     grid-auto-rows: var(--gridList-rows);
     grid-template-rows: masonry;
     grid-auto-flow: row dense;

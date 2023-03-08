@@ -1,28 +1,22 @@
-import React, {useState, useEffect} from 'react'
-import getTrendingTerms from 'services/getTrendingTermsService'
-import Category from 'components/Category'
+import React, {Suspense} from 'react'
 import useNearScreen from 'hooks/useNearScreen'
+import Spinner from 'components/Spinner'
 
-
-function TrendingSearches() {
-    const [trends, setTrends] = useState([])
-
-    useEffect(function(){
-        getTrendingTerms().then(setTrends)
-    },[])
-
-
-  return <Category name="Tendencias" options={trends}/>
-}
-
+//no queremos que el componente trendingsearches se importe siempre así que usaremos react lazy
+const TrendingSearches = React.lazy(
+  //tenemos que pasarle una función que devuelva un import dinamico (asincrono)
+  () => import('./TrendingSearches')
+)
 
 
 export default function LazyTrending(){
-  // const elementRef = useRef()// useRef no vuelve a renderizar el componente
-  const {isNearScreen, fromRef} = useNearScreen({distance: '500px'})
+  const {isNearScreen, fromRef} = useNearScreen({distance: '0px'})
 
   
+  
   return <div ref={fromRef}>
-    {isNearScreen ? <TrendingSearches/>:null}
+    <Suspense fallback={<Spinner />}>
+      {isNearScreen ? <TrendingSearches/> : <Spinner />}
+    </Suspense>
   </div>
 }

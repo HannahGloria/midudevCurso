@@ -5,6 +5,7 @@ import {useGifs} from 'hooks/useGifs'
 import useNearScreen from 'hooks/useNearScreen'
 import debounce from 'just-debounce-it'
 
+
 export default function SearchResults({params}) {
   const {keyword} = params
   const {loading, gifs, setPage} = useGifs({keyword})
@@ -14,7 +15,8 @@ export default function SearchResults({params}) {
     externalRef: loading ? null : externalRef, once: false
   }) 
   
-  const debounceHandleNextPage = useCallback(debounce(
+
+  const debounceHandleNextPage = useCallback(debounce( //
     ()=>setPage(prevPage => prevPage + 1), 500
   ), [])
   //useCallback es para evitar a volver a crear la misma función entre renderizados

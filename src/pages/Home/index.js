@@ -10,6 +10,7 @@ export default function Home() {
     const [keyword, setKeyword] = useState('')
     const [path, pushLocation] = useLocation()
     const {loading, gifs} = useGifs()
+    
 
     // const POPULAR_GIFS = ["Gato", "Pato", "Perro"];
     const handleSubmit = evt => {

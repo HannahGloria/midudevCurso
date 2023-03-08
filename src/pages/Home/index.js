@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {Link, useLocation} from "wouter"
-import getGifs from '../../services/getGifs'
-import ListOfGifs from '../../components/ListOfGifs'
-import {useGifs} from '../../hooks/useGifs'
-import Category from '../../components/Category'
-import TrendingSearches from '../../components/TrendingSearches'
+// import getGifs from 'services/getGifs'
+import ListOfGifs from 'components/ListOfGifs'
+import {useGifs} from 'hooks/useGifs'
+// import Category from 'components/Category'
+import TrendingSearches from 'components/TrendingSearches'
 
 export default function Home() {
     const [keyword, setKeyword] = useState('')
     const [path, pushLocation] = useLocation()
     const {loading, gifs} = useGifs()
 
-    const POPULAR_GIFS = ["Gato", "Pato", "Perro"];
+    // const POPULAR_GIFS = ["Gato", "Pato", "Perro"];
     const handleSubmit = evt => {
         evt.preventDefault()
         //navegar a otra ruta
@@ -43,13 +43,13 @@ export default function Home() {
             </div>
         </div>
         
-        <ul>
+        {/* <ul>
             {POPULAR_GIFS.map((popularGif)=>(
                 <li key={popularGif}>
                     <Link to={`/search/${popularGif}`}>Gifs de {popularGif}</Link>
                 </li>
             ))}
-        </ul>
+        </ul> */}
     </>
   )
 }
